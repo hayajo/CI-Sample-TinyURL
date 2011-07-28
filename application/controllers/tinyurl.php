@@ -19,7 +19,6 @@ class TinyUrl extends CI_Controller {
         if ($this->input->server('REQUEST_METHOD') !== 'POST') {
             return show_404();
         }
-        //$this->load->helper('form');
         $this->load->library('form_validation');
         $this->form_validation->set_rules('url', 'URL', 'required');
         if ($this->form_validation->run() == FALSE) {
@@ -36,7 +35,6 @@ class TinyUrl extends CI_Controller {
             return show_error('oops');
         }
         $url = $this->tinyurl->url($key);
-        echo $url;
         if ($url) {
             return redirect($url);
         } else {
